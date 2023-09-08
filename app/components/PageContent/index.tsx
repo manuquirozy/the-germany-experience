@@ -1,17 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import theme from '../../styles/theme';
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import Map from '../Map';
+import Itinerary from '../Itinerary';
 
 interface PageContentProps {
   city: string;
+  data?: any;
 }
-
-const muiTheme = createTheme(theme);
 
 function a11yProps(index: number) {
   return {
@@ -20,7 +17,7 @@ function a11yProps(index: number) {
   };
 }
 
-const PageContent = ({ city }: PageContentProps) => {
+const PageContent = ({ city, data }: PageContentProps) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -28,23 +25,31 @@ const PageContent = ({ city }: PageContentProps) => {
   };
 
   return (
-    <ThemeProvider theme={muiTheme}>
+    <div>
       <h1 className='text-2xl capitalize text-center pt-4'>{city}</h1>
       <div>
-        <Tabs value={value} onChange={handleChange} aria-label='tabs'>
-          <Tab label='Itinerary' {...a11yProps(0)} />
-          <Tab label='Map' {...a11yProps(1)} />
-          <Tab label='Tickets' {...a11yProps(2)} />
+        <Tabs>
+          <TabList>
+            <Tab>Itinerary</Tab>
+            <Tab>Map</Tab>
+            <Tab>Tickets</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <Itinerary data={data} />
+            </TabPanel>
+            <TabPanel>
+              <Map
+                isBerlin={city === 'berlin'}
+                center={{ lat: 52.5068441, lng: 13.4247317 }}
+                hotelPosition={{ lat: 52.5288341, lng: 13.399627 }}
+              />
+            </TabPanel>
+            <TabPanel>Three</TabPanel>
+          </TabPanels>
         </Tabs>
       </div>
-      {value === 1 && (
-        <Map
-          isBerlin={city === 'berlin'}
-          center={{ lat: 52.5068441, lng: 13.4247317 }}
-          hotelPosition={{ lat: 52.5288341, lng: 13.399627 }}
-        />
-      )}
-    </ThemeProvider>
+    </div>
   );
 };
 

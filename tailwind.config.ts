@@ -17,7 +17,7 @@ const config: Config = {
         'home': "url('/airport.jpg')",
       },
       height: {
-        'map': 'calc(100vh - 120px)',
+        'map': 'calc(100vh - 106px)',
       },
     },
   },

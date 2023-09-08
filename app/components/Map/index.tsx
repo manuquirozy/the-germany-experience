@@ -1,4 +1,6 @@
 
+"use client";
+
 import { GoogleMap, MarkerF, useLoadScript } from '@react-google-maps/api';
 
 interface Coordinates {
@@ -45,7 +47,7 @@ const Map = ({ isBerlin, center, hotelPosition }: MapProps) => {
   };
 
   if (!isLoaded) {
-    return <h1>Loading...</h1>;
+    return <h2>Loading...</h2>;
   } else {
     return (
       <GoogleMap mapContainerClassName='h-map w-screen' center={center} zoom={11}>

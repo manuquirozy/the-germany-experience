@@ -47,10 +47,10 @@ const Map = ({ isBerlin, center, hotelPosition }: MapProps) => {
   };
 
   if (!isLoaded) {
-    return <h2>Loading...</h2>;
+    return <h2 className='text-center'>Loading...</h2>;
   } else {
     return (
-      <GoogleMap mapContainerClassName='h-map w-screen' center={center} zoom={11}>
+      <GoogleMap mapContainerClassName='h-tab w-screen' center={center} zoom={11}>
         {hotelPosition && <MarkerF position={hotelPosition} icon={hotelMarker} />}
         {isBerlin && (
           <>

@@ -23,22 +23,22 @@ const HamburgerMenu = () => {
           <DrawerCloseButton />
           <DrawerBody>
             <ul className='pt-12'>
-              <li className='text-right'>
+              <li className='text-right' onClick={() => onClose()}>
                 <Link href='/'>Home</Link>
               </li>
-              <li className='text-right'>
+              <li className='text-right' onClick={() => onClose()}>
                 <Link href='/berlin'>Berlin</Link>
               </li>
-              <li className='text-right'>
+              <li className='text-right' onClick={() => onClose()}>
                 <Link href='/freiburg'>Freiburg</Link>
               </li>
-              <li className='text-right'>
+              <li className='text-right' onClick={() => onClose()}>
                 <Link href='/hamburg'>Hamburg</Link>
               </li>
-              <li className='text-right'>
+              <li className='text-right' onClick={() => onClose()}>
                 <Link href='/munich'>Munich</Link>
               </li>
-              <li className='text-right'>
+              <li className='text-right' onClick={() => onClose()}>
                 <Link href='/nuremberg'>Nuremberg</Link>
               </li>
             </ul>

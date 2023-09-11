@@ -1,3 +1,5 @@
+"use client"
+
 interface ItineraryProps {
   data: any;
 }

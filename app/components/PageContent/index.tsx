@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import Map from '../Map';
 import Itinerary from '../Itinerary';
+import Places from '../Places';
 
 interface PageContentProps {
   city: string;
@@ -18,12 +19,6 @@ function a11yProps(index: number) {
 }
 
 const PageContent = ({ city, data }: PageContentProps) => {
-  const [value, setValue] = useState(0);
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
-
   return (
     <div>
       <h1 className='text-2xl capitalize text-center pt-4'>{city}</h1>
@@ -31,21 +26,25 @@ const PageContent = ({ city, data }: PageContentProps) => {
         <Tabs>
           <TabList>
             <Tab>Itinerary</Tab>
+            <Tab>Places</Tab>
             <Tab>Map</Tab>
             <Tab>Tickets</Tab>
           </TabList>
           <TabPanels>
-            <TabPanel>
+            <TabPanel className='h-tab overflow-y-scroll'>
               <Itinerary data={data} />
             </TabPanel>
-            <TabPanel>
+            <TabPanel className='h-tab overflow-y-scroll'>
+              <Places data={data} />
+            </TabPanel>
+            <TabPanel className='h-tab overflow-y-scroll'>
               <Map
                 isBerlin={city === 'berlin'}
                 center={{ lat: 52.5068441, lng: 13.4247317 }}
                 hotelPosition={{ lat: 52.5288341, lng: 13.399627 }}
               />
             </TabPanel>
-            <TabPanel>Three</TabPanel>
+            <TabPanel className='h-tab overflow-y-scroll'>Three</TabPanel>
           </TabPanels>
         </Tabs>
       </div>
